@@ -2,7 +2,7 @@
  * @Author: 7erry
  * @Date: 2024-10-17 13:44:18
  * @LastEditTime: 2024-10-23 13:43:00
- * @Description:
+ * @Description: 获取课表并保存到本地
  */
 package main
 

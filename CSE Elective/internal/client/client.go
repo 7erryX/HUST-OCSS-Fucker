@@ -1,3 +1,9 @@
+/*
+ * @Author: 7erry
+ * @Date: 2024-10-17 18:09:20
+ * @LastEditTime: 2025-03-04 16:45:16
+ * @Description:
+ */
 package client
 
 import (
@@ -62,14 +68,17 @@ func (c *Fucker) SelectCourse(target *course.Course) error {
 	return course.SelectCourse(c.Client, target)
 }
 
+// * TimeDiff 实际上是 Client 发送请求时的 Client 本地时间与 Server 收到请求时的 Server 本地时间的时间差
 func (c *Fucker) GetTimeDiff() (time.Duration, error) {
-	//* 往返过程中大概率是 Client 发送时间更接近 Server 收到请求的时间
 	c_date := time.Now()
-	resp, err := c.Client.R().Get("http://222.20.126.201/student/student/course")
+	// resp, err := c.Client.R().Get("http://222.20.126.201/student/student/course")
+	//* 这个 URL 好像不被限流为 200 次每接口每人每 12h 的请求频率
+	resp, err := c.Client.R().Get("http://222.20.126.201/student/index")
 	//* fmt.Println(c_date)
 	//* fmt.Println(time.Now())
 	utils.CheckIfError(err)
 	//* fmt.Println(resp.TotalTime())
+
 	date_str, ok := resp.Header["Date"]
 	if !ok {
 		return -1, ErrGetTimeDiffFailed
@@ -78,6 +87,5 @@ func (c *Fucker) GetTimeDiff() (time.Duration, error) {
 	utils.CheckIfError(err)
 	s_date = s_date.Local()
 	//* utils.Info("Client Time:%s\nServer Time:%s", c_date, s_date)
-	//* 按照之前抢课的经验服务器时间会更快
 	return c_date.Sub(s_date), nil
 }

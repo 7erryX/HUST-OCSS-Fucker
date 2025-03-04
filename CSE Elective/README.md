@@ -1,7 +1,7 @@
 <!--
  * @Author: 7erry
  * @Date: 2024-10-17 12:55:37
- * @LastEditTime: 2024-11-07 14:10:24
+ * @LastEditTime: 2025-03-04 13:59:06
  * @Description: 
 -->
 # CSE Elective 网安专选课
@@ -46,8 +46,7 @@ go run ./cmd/Cli/main.go
 
 ## ToDo
 
--[ ] 进行混淆处理避免被 Gank
--[ ] 尝试通过其它方式判断待选目标的接口开放情况
+- [ ] 测试选课平台 Token 过期时间
 
 ## Reference
 

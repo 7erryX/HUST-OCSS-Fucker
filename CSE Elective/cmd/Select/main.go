@@ -2,7 +2,7 @@
  * @Author: 7erry
  * @Date: 2024-10-17 13:44:18
  * @LastEditTime: 2024-10-23 13:41:02
- * @Description:
+ * @Description: 持续发包抢课
  */
 package main
 

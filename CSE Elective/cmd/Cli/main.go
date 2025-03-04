@@ -1,8 +1,8 @@
 /*
  * @Author: 7erry
  * @Date: 2024-10-23 13:18:55
- * @LastEditTime: 2024-11-07 14:02:43
- * @Description:
+ * @LastEditTime: 2025-03-04 17:05:33
+ * @Description: 踩点抢课
  */
 package main
 
@@ -29,7 +29,7 @@ func main() {
 
 	targets, err := c.GetCourses()
 	if err != nil {
-		utils.Info("[!] 获取课程列表失败: ", err)
+		utils.Info("[!] 获取课程列表失败: %v", err)
 		return
 	}
 
@@ -57,10 +57,40 @@ func main() {
 	time_diff, err := c.GetTimeDiff()
 	utils.CheckIfError(err)
 
+	tf := struct {
+		sum   time.Duration
+		count int
+		avg   time.Duration
+	}{
+		time_diff,
+		1,
+		time_diff,
+	}
+
 	toki := date.Add(time_diff)
-	duration := time.Until(toki)
-	utils.Info("[*] 即将在 %s 开始抢课\n请等待 %s", toki, duration)
-	time.Sleep(duration)
+
+	//* Keep the token alive and fix the time diff
+	for time.Now().Before(toki) {
+		time_diff, err = c.GetTimeDiff()
+		utils.CheckIfError(err)
+
+		tf.sum += time_diff
+		tf.count += 1
+		tf.avg = tf.sum / time.Duration(tf.count)
+
+		toki = date.Add(tf.avg)
+		duration := time.Until(toki)
+		utils.Info(
+			"[*] C-S TimeDiff: %v\n本地抢课时间: %v\n等待时间: %v\n",
+			tf.avg,
+			toki,
+			duration,
+		)
+		if duration < time.Minute {
+			break
+		}
+		time.Sleep(time.Minute)
+	}
 
 	for !time.Now().Before(toki) {
 		startTime := time.Now()
@@ -72,9 +102,8 @@ func main() {
 			fmt.Printf("[!] 选课失败: %s, 耗时: %s, now: %s\n", err, end.Sub(startTime), end)
 			time.Sleep(config.TIME_INTERVAL * time.Millisecond)
 		} else {
-			utils.Info("[*] 选课成功")
+			utils.Info("[*] 选课成功, 耗时: %s, now: %s\n", end.Sub(startTime), end)
 			break
 		}
 	}
-
 }

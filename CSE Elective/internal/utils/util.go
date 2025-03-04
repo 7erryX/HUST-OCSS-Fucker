@@ -11,7 +11,7 @@ func CheckIfError(err error) {
 	if err == nil {
 		return
 	}
-	// logger.Warnf("\x1b[31;1m%s\x1b[0m\n", fmt.Sprintf("error: %s", err))
+	// logrus.Warnf("\x1b[31;1m%s\x1b[0m\n", fmt.Sprintf("error: %s", err))
 	fmt.Printf("\x1b[31;1m%s\x1b[0m\n", fmt.Sprintf("error: %s", err))
 	//os.Exit(1)
 	panic(err)
@@ -19,13 +19,13 @@ func CheckIfError(err error) {
 
 // Info should be used to describe the example commands that are about to run.
 func Info(format string, args ...interface{}) {
-	// logger.Infof("\x1b[34;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
+	// logrus.Infof("\x1b[34;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
 	fmt.Printf("\x1b[34;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
 }
 
 // Warning should be used to display a warning
 func Warning(format string, args ...interface{}) {
-	// logger.Warnf("\x1b[36;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
+	// logrus.Warnf("\x1b[36;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
 	fmt.Printf("\x1b[36;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
 }
 
