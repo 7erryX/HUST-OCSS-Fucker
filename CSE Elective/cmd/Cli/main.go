@@ -92,7 +92,9 @@ func main() {
 		time.Sleep(time.Minute)
 	}
 
-	for !time.Now().Before(toki) {
+	utils.Info("[*] %v Ready", time.Now())
+
+	for time.Now().Before(toki) {
 		startTime := time.Now()
 		err := c.SelectCourse(&course.Course{
 			CourseId: id,
