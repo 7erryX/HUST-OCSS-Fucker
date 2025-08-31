@@ -1,4 +1,4 @@
-module github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective
+module github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective
 
 go 1.23.0
 

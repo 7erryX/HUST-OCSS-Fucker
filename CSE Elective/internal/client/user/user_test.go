@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective/config"
+	"github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective/config"
 	"github.com/imroc/req/v3"
 )
 

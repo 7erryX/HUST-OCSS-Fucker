@@ -10,9 +10,9 @@ import (
 	"errors"
 	"time"
 
-	"github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective/internal/client/course"
-	"github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective/internal/client/user"
-	"github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective/internal/utils"
+	"github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective/internal/client/course"
+	"github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective/internal/client/user"
+	"github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective/internal/utils"
 	"github.com/imroc/req/v3"
 )
 

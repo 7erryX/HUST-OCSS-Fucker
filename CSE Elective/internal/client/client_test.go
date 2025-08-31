@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective/config"
-	"github.com/RuijieWu/HUST-OCSS-Fucker/CSE-Elective/internal/utils"
+	"github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective/config"
+	"github.com/7erryX/HUST-OCSS-Fucker/CSE-Elective/internal/utils"
 )
 
 func TestGetTimeDiff(t *testing.T) {
