@@ -13,6 +13,8 @@ Todo (Waiting for PR)
 
 Todo (Waiting for PR)
 
+- [ ] 使用RPC等方式为go版本添加UI
+
 ## Labor Education 劳动教育
 
 Todo (Waiting for PR)
